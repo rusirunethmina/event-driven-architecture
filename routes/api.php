@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
-Route::post('/product', function () {
-    return view('welcome');
-});
+
+
+Route::post('/product', [ProductController::class, 'store']);
