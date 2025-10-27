@@ -12,10 +12,10 @@ class PublishProductWebhook implements ShouldQueue
 {
     use Queueable;
 
-    public function handle(ProductCreated $event)
+    public function handle(ProductCreated $event): void
     {
         $product = $event->product;
-        Http::post('https://api.aldar.dev.pixelprodev.xyz/api/v1/webhook', $product->toArray());
+        Http::post(env('WEBHOOK_URL'), $product->toArray());
         Log::info('PublishProductWebhook');
     }
 }
